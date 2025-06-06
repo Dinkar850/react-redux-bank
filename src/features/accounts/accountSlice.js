@@ -14,6 +14,7 @@ const accountSlice = createSlice({
   reducers: {
     deposit(state, action) {
       state.balance += action.payload;
+      state.isLoading = false;
     },
     withdraw(state, action) {
       state.balance -= action.payload;
@@ -36,6 +37,9 @@ const accountSlice = createSlice({
       state.balance -= state.loan;
       state.loanPurpose = "";
       state.loan = 0;
+    },
+    convertingCurrency(state) {
+      state.isLoading = true;
     },
   },
 });
